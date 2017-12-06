@@ -6,6 +6,13 @@ from imager_images.models import Album, Photo
 class LibraryView(TemplateView):
     """Library view class based view."""
 
+    def get_context_data(self):
+        """Gets album and photos"""
+        user = self.request.user
+        return {
+            'photos': user.photo.all(),
+            'albums': user.album.all(),
+        }
 
 class PhotoView(ListView):
     """Photo view class based view."""

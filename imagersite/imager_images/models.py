@@ -45,7 +45,7 @@ class Album(ImageBaseClass):
     """Album model."""
 
     user = models.ForeignKey(User, on_delete=models.CASCADE,
-                             related_name='albums')
+                             related_name='album')
     cover = models.ImageField(upload_to='images')
     date_created = models.DateField(editable=False, auto_now_add=True)
 
