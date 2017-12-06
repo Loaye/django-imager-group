@@ -21,6 +21,7 @@ class ImageBaseClass(models.Model):
     date_published = models.DateField(blank=True, null=True)
     published = models.CharField(choices=PUBLISHED, max_length=8)
 
+
     class Meta:
         """Meta."""
 
@@ -30,8 +31,8 @@ class ImageBaseClass(models.Model):
 class Photo(ImageBaseClass):
     """Photo model."""
 
-    user = models.ForeignKey(ImagerProfile, on_delete=models.CASCADE,
-                             related_name='photos')
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+                             related_name='photo')
     image = models.ImageField(upload_to='images')
     date_uploaded = models.DateField(editable=False, auto_now_add=True)
     
@@ -43,7 +44,7 @@ class Photo(ImageBaseClass):
 class Album(ImageBaseClass):
     """Album model."""
 
-    user = models.ForeignKey(ImagerProfile, on_delete=models.CASCADE,
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
                              related_name='albums')
     cover = models.ImageField(upload_to='images')
     date_created = models.DateField(editable=False, auto_now_add=True)
