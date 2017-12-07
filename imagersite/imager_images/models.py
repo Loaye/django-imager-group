@@ -48,6 +48,7 @@ class Album(ImageBaseClass):
                              related_name='album')
     cover = models.ImageField(upload_to='images')
     date_created = models.DateField(editable=False, auto_now_add=True)
+    photos = models.ManyToManyField(Photo, related_name='albums', blank=True)
 
     def __str__(self):
         """Print function displays username."""

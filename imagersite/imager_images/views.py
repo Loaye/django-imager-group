@@ -1,6 +1,9 @@
 """Views module for imager_images."""
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, CreateView
+from django.urls import reverse_lazy
 from imager_images.models import Album, Photo
+from imager_images.forms import AlbumForm, PhotoForm
+
 
 
 class LibraryView(TemplateView):

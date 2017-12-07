@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.views.generic import TemplateView, CreateView
 from imager_images.models import Photo, Album
 from imager_profile.models import ImagerProfile
+from imager_images.forms import AlbumForm
 
 
 class UserView(TemplateView):
@@ -87,12 +88,14 @@ class AddAlbum(CreateView):
     """View for adding a album."""
 
     model = Album
-    fields = [
-        'cover',
-        'title',
-        'description',
-        'published'
-    ]
+    form_class = AlbumForm
+    # fields = [
+    #     'cover',
+    #     'title',
+    #     'description',
+    #     'published',
+    #     'photos'
+    # ]
     success_url = reverse_lazy('library')
 
     def form_valid(self, form):
