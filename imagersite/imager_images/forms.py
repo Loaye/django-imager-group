@@ -44,14 +44,15 @@ class AlbumForm(forms.ModelForm):
         """."""
 
         model = Album
-        fields = ('docfile', 'title', 'description', 'published')
+        fields = ('photos', 'title', 'description', 'published')
+        exclude = ['user']
 
-    docfile = forms.ImageField(label='Select File')
-    title = forms.CharField(label='Title', max_length=100)
-    description = forms.CharField(label='Description', widget=forms.Textarea)
-    PUBLISHED = [
-        ('PRIVATE', 'Private'),
-        ('SHARED', 'Shared'),
-        ('PUBLIC', 'Public')
-    ]
-    published = forms.ChoiceField(choices=PUBLISHED)
+    # docfile = forms.ImageField(label='Select File')
+    # title = forms.CharField(label='Title', max_length=100)
+    # description = forms.CharField(label='Description', widget=forms.Textarea)
+    # PUBLISHED = [
+    #     ('PRIVATE', 'Private'),
+    #     ('SHARED', 'Shared'),
+    #     ('PUBLIC', 'Public')
+    # ]
+    # published = forms.ChoiceField(choices=PUBLISHED)
