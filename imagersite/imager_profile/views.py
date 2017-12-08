@@ -14,29 +14,18 @@ class UserView(TemplateView):
 
     model = ImagerProfile
 
-    def get_context_data(self, username=None):
-        """Get the context."""
-
 
 class ProfileView(TemplateView):
     """Profile view class based view."""
 
     model = ImagerProfile
 
-    # def get_context_data(self, username=None):
-    #     """Get context data for view."""
-    #     user = self.request.user.get(username=username)
-    #     photo = Photo.objects.order_by('?').first()
-    #     album = Album.objects.order_by('?').first()
-    #     return {'photo': photo,
-    #             'album': album,
-    #             'user': user}
-
 
 class EditProfileView(CreateView):
     """."""
-
+    import pdb; pdb.set_trace()
     model = ImagerProfile
+    user_id = ImagerProfile.user_id
     fields = [
         'website',
         'location',
@@ -48,12 +37,9 @@ class EditProfileView(CreateView):
         'phone'
     ]
     success_url = reverse_lazy('user_profile')
-    
-    # def get_context_data(self, username=None):
-    #     """Get context data for view."""
-    #     user = User.objects.get(username=username)
-    #     return {'user': user}
+
     def form_valid(self, form):
+        """."""
         if self.request.user.is_authenticated:
             form.instance.author = self.request.user
             self.object = form.save()
@@ -89,13 +75,7 @@ class AddAlbum(CreateView):
 
     model = Album
     form_class = AlbumForm
-    # fields = [
-    #     'cover',
-    #     'title',
-    #     'description',
-    #     'published',
-    #     'photos'
-    # ]
+
     success_url = reverse_lazy('library')
 
     def form_valid(self, form):

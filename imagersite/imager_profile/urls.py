@@ -3,7 +3,7 @@
 from django.conf import settings
 from django.conf.urls import url
 from django.conf.urls.static import static
-from imager_profile.views import ProfileView, UserView, EditProfileView, AddImage, AddAlbum
+from imager_profile.views import UserView, EditProfileView, AddImage, AddAlbum
 
 urlpatterns = [
     url(r'^$',
