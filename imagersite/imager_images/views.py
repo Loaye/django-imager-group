@@ -19,7 +19,6 @@ class LibraryView(TemplateView):
 
 class PhotoView(ListView):
     """Photo view class based view."""
-    import pdb; pdb.set_trace()
     model = Photo
     template_name = 'imager_images/photo.html'
 

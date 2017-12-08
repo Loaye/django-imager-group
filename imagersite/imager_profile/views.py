@@ -22,8 +22,7 @@ class ProfileView(TemplateView):
 
 
 class EditProfileView(CreateView):
-    """."""
-    import pdb; pdb.set_trace()
+    """Edit profile information."""
     model = ImagerProfile
     user_id = ImagerProfile.user_id
     fields = [
