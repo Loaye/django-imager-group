@@ -26,8 +26,8 @@
 <hr class="divider">
 
 
-{% if request.user.is_authenticated and photo.published == 'PUBLIC' %}
-        <h3>{{photo.title}}</h3>
+{% if request.user.is_authenticated %}
+        <p>{{ photo.title }}</p>
         <a href="/profile/{{ photo.user.user }}">{{ user.profile.photo }}</a>
         <div class="col-lg-3 col-md-4 col-xs-6">
           <a href="/profile/{{photo.user.user}}" class="d-block mb-4 h-100">

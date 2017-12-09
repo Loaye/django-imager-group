@@ -1,5 +1,5 @@
 """Views module for imager_images."""
-from django.views.generic import TemplateView, ListView, CreateView
+from django.views.generic import TemplateView, ListView, CreateView, DetailView
 from django.urls import reverse_lazy
 from imager_images.models import Album, Photo
 from imager_images.forms import AlbumForm, PhotoForm
@@ -17,18 +17,12 @@ class LibraryView(TemplateView):
         }
 
 
-class PhotoView(ListView):
+class PhotoView(DetailView):
     """Photo view class based view."""
     model = Photo
     template_name = 'imager_images/photo.html'
-
-    def get_context_data(self, pk=None):
-        """Get context data for view."""
-        user = self.request.user
-        photo = user.photo.get(id=pk)
-        return {'photo': photo}
-
-
+ 
+ 
 class AlbumView(ListView):
     """Album view class based view."""
 

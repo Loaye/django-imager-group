@@ -44,7 +44,7 @@ class AlbumForm(forms.ModelForm):
         """."""
 
         model = Album
-        fields = ('photos', 'title', 'description', 'published')
+        fields = ('cover', 'photos', 'title', 'description', 'published')
         exclude = ['user']
 
     # docfile = forms.ImageField(label='Select File')
