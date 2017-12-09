@@ -17,10 +17,10 @@ urlpatterns = [
         name='photo'),
     url(r'^albums/(?P<pk>\d+)/edit/$',
         EditAlbum.as_view(template_name='imager_images/edit_album.html'),
-        name='album'),
+        name='edit_album'),
     url(r'^photos/(?P<pk>\d+)/edit/$',
         EditImage.as_view(template_name='imager_images/edit_photo.html'),
-        name='album'),
+        name='edit_image'),
 ]
 
 if settings.DEBUG:

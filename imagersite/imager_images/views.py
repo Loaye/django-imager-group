@@ -3,13 +3,15 @@ from django.views.generic import TemplateView, ListView, CreateView, DetailView
 from django.urls import reverse_lazy
 from imager_images.models import Album, Photo
 from imager_images.forms import AlbumForm, PhotoForm
+from imager_profile.views import AddAlbum, AddImage
+from django.http import Http404
 
 
 class LibraryView(TemplateView):
     """Library view class based view."""
 
     def get_context_data(self):
-        """Gets album and photos"""
+        """Get album and photos."""
         user = self.request.user
         return {
             'photos': user.photo.all(),
@@ -19,16 +21,18 @@ class LibraryView(TemplateView):
 
 class PhotoView(DetailView):
     """Photo view class based view."""
+
     model = Photo
     template_name = 'imager_images/photo.html'
- 
- 
+
+
 class AlbumView(ListView):
     """Album view class based view."""
 
     model = Album
     template_name = 'imager_images/album.html'
-  
+
+
 class EditAlbum(CreateView):
     """View for adding a album."""
 
@@ -46,16 +50,13 @@ class EditAlbum(CreateView):
         else:
             raise Http404()
 
+
 class EditImage(CreateView):
     """View for adding a image."""
 
     model = Photo
-    fields = [
-        'image',
-        'title',
-        'description',
-        'published'
-    ]
+    form_class = PhotoForm
+
     success_url = reverse_lazy('library')
 
     def form_valid(self, form):
