@@ -1,9 +1,9 @@
 {% extends "imagersite/base.html" %}
-{% load i18n %}
 
 {% block css%}
+
 {% load static %}
-<link href="{% static 'css/library.css' %}" rel="stylesheet">
+<link href="{% static 'css/form.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block nav %}
@@ -21,21 +21,23 @@
 {% endblock %}
 
 {% block content %}
-<h1>Photos</h1>
-<hr class="divider">
-<hr class="divider">
-
 
 {% if request.user.is_authenticated %}
-        <p>{{ photo.title }}</p>
-        <a href="/profile/{{ photo.user.user }}">{{ user.profile.photo }}</a>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="/profile/{{photo.user.user}}" class="d-block mb-4 h-100">
-            <img class="img-fluid" src="{{ photo.image.url }}" alt="My image"/>
-          </a>
-          <p>{{photo.description}}</p>
-          <h4>Uploaded: {{photo.date_uploaded}}</h4>
-        </div>
+<div class='reg_form'>
+<h1>Edit Album</h1>
+    <section>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+</div>
+{% else %}
+
+<h2>You must be logged in to edit your album.</h2>
+<a class="nav-link text-uppercase text-expanded" href="{% url 'login' %}"><h3>Login</h3></a>
+
 {% endif %}
 
 {% endblock %}
